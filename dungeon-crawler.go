@@ -1,6 +1,8 @@
 package main
 
-//  --Variables utilitaires décrivant les commandes
+import "strings"
+
+// --Variables utilitaires décrivant les commandes
 
 // Chaque déplacement d'une case coûte un point de fatigue
 var MoveUp = uint32(0)
@@ -21,17 +23,29 @@ var currentIndex = -1
 var actions = []uint32{0, 0, 0, 1, 2, 1, 0, 0, 4, 1, 1, 1}
 
 func NextMove(room string) uint32 {
+lines := strings.Split(room, "\n")
 
-	for i := 0; i < 10; i++ {
-		MoveUp = MoveUp
-		
-		
+var pX, pY, xX, xY int
+for y, line := range lines {
+	for x, char := range line {
+		if char == 'P' {
+			pX, pY = x, y
+		} else if char == 'X' {
+			xX, xY = x, y
+		}
 	}
+}
 
-
-
-	currentIndex++
-
-	//return actions[currentIndex]
+if pX < xX {
+	return MoveRight
+} else if pX > xX {
+	return MoveLeft
+} else if pY < xY {
+	return MoveDown
+} else if pY > xY {
 	return MoveUp
+}
+
+currentIndex++
+return MoveUp
 }
