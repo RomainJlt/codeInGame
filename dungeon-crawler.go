@@ -21,10 +21,15 @@ var currentIndex = -1
 var actions = []uint32{0, 0, 0, 1, 2, 1, 0, 0, 4, 1, 1, 1}
 
 func NextMove(room string) uint32 {
-	/**
-	/* Insérez votre code ici
-	/*
-	/*                        */
+
+	for i := 0; i < 10; i++ {
+		MoveUp = MoveUp
+		
+		
+	}
+
+
+
 	currentIndex++
 
 	//return actions[currentIndex]
